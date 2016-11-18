@@ -7,21 +7,13 @@
   </head>
   <body>
     <div class="container">
-      <h1>Address Book</h1>
-      @if (Model.Count == 0)
-      {
-        <h2>You have no contacts listed!</h2>
-      }
-      @foreach (var contact in Model)
-      {
-
-        <p>
-          <a href="/contacts/@contact.GetId()">@contact.GetName()</a>
-        </p>
-      }
+    <h1>Address Book</h1>
+    <h2>Details for @Model.GetName() </h2>
+    <h3>@Model.GetPhone()</h3>
+    <h3>@Model.GetAddress()</h3>
       <p><a href="/contacts/add">Add a contact</a></p>
+      <p><a href="/">View All Contacts</a></p>
       <p><a href="/clear">Clear Contact List</a>
-
     </div>
   </body>
 </html>
