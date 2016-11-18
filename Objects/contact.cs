@@ -60,6 +60,17 @@ namespace AddressBook.Objects
     {
         _allContacts.Clear();
     }
+    public static void RemoveContact(int contactId)
+    {
+      _allContacts.RemoveAt(contactId -1);
+      int newId = 1;
+      foreach (Contact thisContact in _allContacts)
+      {
+        thisContact._id = newId;
+        newId ++;
+      }
+    }
+
     public static List<Contact> SearchContact(string searchInput)
     {
       List<Contact> searchList = new List<Contact> {};

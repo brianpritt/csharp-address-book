@@ -17,8 +17,7 @@ namespace AddressBook
         return View["contact_form.cshtml"];
       };
 
-      Post["/contact/new"] = _ =>
-      {
+      Post["/contact/new"] = _ =>{
         if (Request.Form["name"] == ""){
           string noName = "No Name";
           Contact newContact = new Contact (noName, Request.Form["phone"], Request.Form["address"]);
@@ -41,9 +40,16 @@ namespace AddressBook
         return View["clear.cshtml"];
       };
 
+      Post["/contact/"] = _ =>{
+        int contactId = Request.Form["contact-id"];
+        Contact.RemoveContact(contactId);
+        return View["removed.cshtml"];
+      };
+
       Get["/contact/search"] = _ =>{
         return View["search.cshtml"];
       };
+      
       Post["/contact/search_result"] = _ =>{
         string searchName = Request.Form["search"];
         var searchResults = Contact.SearchContact(searchName);
