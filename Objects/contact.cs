@@ -60,5 +60,19 @@ namespace AddressBook.Objects
     {
         _allContacts.Clear();
     }
+    public static List<Contact> SearchContact(string searchInput)
+    {
+      List<Contact> searchList = new List<Contact> {};
+      string searchInputLower = searchInput.ToLower();
+      foreach (Contact thisContact in _allContacts)
+      {
+        string contactName = thisContact.GetName().ToLower();
+        if (contactName.Contains(searchInputLower))
+        {
+          searchList.Add(thisContact);
+        }
+      }
+      return searchList;
+    }
   }
 }

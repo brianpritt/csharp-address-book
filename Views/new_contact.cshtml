@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Address Book</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Address Book</h1>
+      <h2>You created a new contact!</h2>
+      <hr>
+      <h4>@Model.GetName()</h4>
+      <h4>@Model.GetPhone()</h4>
+      <h4>@Model.GetAddress()</h4>
+      <hr>
+
+      <p><a href="/contact/new">Add a contact</a></p>
+      <p><a href="/">View All Contacts</a></p>
+      <p><a href="/contact/search">Search for a contact</a></p>
+    </div>
+  </body>
+</html>

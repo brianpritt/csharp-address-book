@@ -12,30 +12,42 @@ namespace AddressBook
       Get["/"] = _ =>{
         return View["index.cshtml", Contact.GetAll()];
       };
+
       Get["/contact/new"] =_=>{
         return View["contact_form.cshtml"];
       };
-      Post["/"] = _ =>
+
+      Post["/contact/new"] = _ =>
       {
         if (Request.Form["name"] == ""){
           string noName = "No Name";
           Contact newContact = new Contact (noName, Request.Form["phone"], Request.Form["address"]);
-          List<Contact> allContacts = Contact.GetAll();
-          return View["index.cshtml", allContacts];
+          return View["new_contact.cshtml", newContact];
         }else{
-          Console.WriteLine("Name");
           Contact newContact = new Contact (Request.Form["name"], Request.Form["phone"], Request.Form["address"]);
-          List<Contact> allContacts = Contact.GetAll();
-          return View["index.cshtml", allContacts];
+          return View["new_contact.cshtml", newContact];
         }
       };
+
       Get["/contact/{id}"] = parameters =>{
         var currentContact = Contact.FindId(parameters.id);
         return View["contact.cshtml", currentContact];
       };
-      Post["/clear"]= _ =>{
+
+      Post["/{action}"]= parameters =>{
+        if (parameters.action == "clear"){
         Contact.ClearAll();
+        }
         return View["clear.cshtml"];
+      };
+
+      Get["/contact/search"] = _ =>{
+        return View["search.cshtml"];
+      };
+      Post["/contact/search_result"] = _ =>{
+        string searchName = Request.Form["search"];
+        var searchResults = Contact.SearchContact(searchName);
+        return View["results.cshtml", searchResults];
       };
     }
   }

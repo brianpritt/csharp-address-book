@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Address Book</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Address Book</h1>
+
+      @foreach (var contact in Model)
+      {
+        <p>
+          <a href="/contact/@contact.GetId()">@contact.GetName()</a>
+        </p>
+      }
+      <form action ="/clear" method="post">
+        <button type="submit" name="clear" class="btn">Clear Contacts</button>
+      </form>
+
+      <p><a href="/contact/search">Search for a contact</a></p>
+      <p><a href="/contact/new">Add a contact</a></p>
+    </div>
+  </body>
+</html>
