@@ -56,5 +56,9 @@ namespace AddressBook.Objects
     {
       return _allContacts[idNumber -1];
     }
+    public static void ClearAll()
+    {
+        _allContacts.Clear();
+    }
   }
 }
