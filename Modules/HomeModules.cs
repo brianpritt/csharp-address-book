@@ -11,7 +11,7 @@ namespace AddressBook
     {
       Get["/"] = _ =>{
         return View["index.cshtml", Contact.GetAll()];
-      };
+      }; 
 
       Get["/contact/new"] =_=>{
         return View["contact_form.cshtml"];
@@ -19,11 +19,13 @@ namespace AddressBook
 
       Post["/contact/new"] = _ =>{
         if (Request.Form["name"] == ""){
+          Address newAddress = new Address (Request.Form["street"],Request.Form["city"],Request.Form["state"], Request.Form["zip"]);
           string noName = "No Name";
-          Contact newContact = new Contact (noName, Request.Form["phone"], Request.Form["address"]);
+          Contact newContact = new Contact (noName, Request.Form["phone"], newAddress);
           return View["new_contact.cshtml", newContact];
         }else{
-          Contact newContact = new Contact (Request.Form["name"], Request.Form["phone"], Request.Form["address"]);
+          Address newAddress = new Address (Request.Form["street"],Request.Form["city"],Request.Form["state"], Request.Form["zip"]);
+          Contact newContact = new Contact (Request.Form["name"], Request.Form["phone"], newAddress);
           return View["new_contact.cshtml", newContact];
         }
       };
@@ -49,7 +51,7 @@ namespace AddressBook
       Get["/contact/search"] = _ =>{
         return View["search.cshtml"];
       };
-      
+
       Post["/contact/search_result"] = _ =>{
         string searchName = Request.Form["search"];
         var searchResults = Contact.SearchContact(searchName);

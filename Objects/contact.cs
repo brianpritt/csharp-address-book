@@ -6,12 +6,12 @@ namespace AddressBook.Objects
   {
     private string _name;
     private string _phone;
-    private string _address;
+    private Address _address;
     private int _id;
 
     private static List<Contact> _allContacts = new List<Contact> {};
 
-    public Contact(string contactName, string contactPhone, string contactAddress)
+    public Contact(string contactName, string contactPhone, Address contactAddress)
     {
       _name = contactName;
       _phone = contactPhone;
@@ -40,14 +40,16 @@ namespace AddressBook.Objects
     {
       _phone = newPhone;
     }
-    public string GetAddress()
+
+    public Address GetAddress()
     {
       return _address;
     }
-    public void SetAddress(string newAddress)
+    public void SetAddress(Address newAddress)
     {
       _address = newAddress;
     }
+
     public int GetId()
     {
       return _id;

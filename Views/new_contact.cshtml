@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/Content/css/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
     <title>Address Book</title>
   </head>
   <body>
@@ -11,13 +13,18 @@
       <h2>You created a new contact!</h2>
       <hr>
       <h4>@Model.GetName()</h4>
-      <h4>@Model.GetPhone()</h4>
-      <h4>@Model.GetAddress()</h4>
       <hr>
+      <h4>@Model.GetPhone()</h4>
+      <h4>@Model.GetAddress().GetStreet()</h4>
+      <h4>@Model.GetAddress().GetCity() ,  @Model.GetAddress().GetState()</h4>
+      <h4>@Model.GetAddress().GetZip()</h4>
 
-      <p><a href="/contact/new">Add a contact</a></p>
-      <p><a href="/">View All Contacts</a></p>
-      <p><a href="/contact/search">Search for a contact</a></p>
+      <hr>
+      <nav>
+        <p><a href="/contact/new">Add a contact</a></p>
+        <p><a href="/">View All Contacts</a></p>
+        <p><a href="/contact/search">Search for a contact</a></p>
+      </nav>
     </div>
   </body>
 </html>

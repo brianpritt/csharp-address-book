@@ -2,25 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/Content/css/styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
     <title>Address Book</title>
   </head>
   <body>
     <div class="container">
     <h1>Address Book</h1>
-    <h3>Details for @Model.GetName() </h3>
+    <h4>@Model.GetName()</h4>
     <hr>
-    <h4>Phone: @Model.GetPhone()</h4>
-    <h4>Home Address: @Model.GetAddress()</h4>
-    <hr>
+    <h4>@Model.GetPhone()</h4>
+    <h4>@Model.GetAddress().GetStreet()</h4>
+    <h4>@Model.GetAddress().GetCity() ,  @Model.GetAddress().GetState()</h4>
+    <h4>@Model.GetAddress().GetZip()</h4>
     <form  action="/contact" method="post">
       <input type="hidden" name="contact-id" id="contact-id" value="@Model.GetId()">
       <button type="submit" name="remove" class="btn">Remove Contact</button>
     </form>
     <hr>
-    <p><a href="/contact/new">Add a contact</a></p>
-    <p><a href="/">View All Contacts</a></p>
-    <p><a href="/contact/search">Search for a contact</a></p>
+    <nav>
+      <p><a href="/contact/new">Add a contact</a></p>
+      <p><a href="/">View All Contacts</a></p>
+      <p><a href="/contact/search">Search for a contact</a></p>
+    </nav>
     </div>
   </body>
 </html>

@@ -1,0 +1,13 @@
+body{
+  font-family: 'Dosis', sans-serif;
+}
+input{
+  margin-top: 10px;
+}
+button{
+  margin-top:10px;
+}
+nav p{
+  display: inline-block;
+  margin-right: 5px;
+}
